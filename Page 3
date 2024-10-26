@@ -1,81 +1,59 @@
-
 <!DOCTYPE HTML>
-<html lang="en">
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
 	<head>
-		<title>Java Exceptions</title>
+		<title>Generic Page - Massively by HTML5 UP</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
-		
+
 		<!-- Wrapper -->
 			<div id="wrapper">
 
 				<!-- Header -->
 					<header id="header">
-						<a href="index.html" class="logo">Java Exceptions</a>
+						<a href="index.html" class="logo">Massively</a>
 					</header>
 
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-							<li class="active"><a href="generic.html">Java Exceptions</a></li>
+							<li><a href="index.html">This is Massively</a></li>
+							<li class="active"><a href="generic.html">Generic Page</a></li>
 							<li><a href="elements.html">Elements Reference</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
 						</ul>
 					</nav>
 
 				<!-- Main -->
 					<div id="main">
 
-						<!-- Textual Information -->
-						<section class="post">
-							<header class="major">
-								<h1>Understanding Exceptions in Java</h1>
-								<p>In Java, an exception is an event that disrupts the normal flow of the program's instructions. Exceptions can be caused by various issues such as input/output errors, network failures, or unexpected user input. Java provides a robust mechanism to handle exceptions and maintain the stability of applications.</p>
-							</header>
-							<p>There are two types of exceptions in Java:</p>
-							<ul>
-								<li><strong>Checked Exceptions:</strong> These are exceptions that are checked at compile-time. Examples include IOException and SQLException.</li>
-								<li><strong>Unchecked Exceptions:</strong> These exceptions occur at runtime. Examples include NullPointerException and ArrayIndexOutOfBoundsException.</li>
-							</ul>
-						</section>
-
-						<!-- Video Information -->
-						<section class="post">
-							<header class="major">
-								<h1>Video Overview</h1>
-							</header>
-							<div class="video-container">
-								<iframe width="560" height="315" src="https://www.youtube.com/embed/d2kBGoX2v6A" frameborder="0" allowfullscreen></iframe>
-							</div>
-						</section>
-
-						<!-- Quiz Section -->
-						<section class="post">
-							<header class="major">
-								<h1>Quiz: Test Your Knowledge</h1>
-							</header>
-							<p>1. What are the two types of exceptions in Java?</p>
-							<p>2. How do you handle exceptions in Java?</p>
-							<p>3. Give an example of a checked exception.</p>
-							<p>4. What happens if an unchecked exception is not handled?</p>
-						</section>
-
-						<!-- Code Snippets -->
-						<section class="post">
-							<header class="major">
-								<h1>Code Snippets</h1>
-							</header>
-							<pre><code>try {
-    int result = 10 / 0; // This will throw ArithmeticException
-} catch (ArithmeticException e) {
-    System.out.println("Error: " + e.getMessage());
-} finally {
-    System.out.println("This will always execute.");
-}</code></pre>
-						</section>
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<span class="date">April 25, 2017</span>
+									<h1>This is a<br />
+									Generic Page</h1>
+									<p>Aenean ornare velit lacus varius enim ullamcorper proin aliquam<br />
+									facilisis ante sed etiam magna interdum congue. Lorem ipsum dolor<br />
+									amet nullam sed etiam veroeros.</p>
+								</header>
+								<div class="image main"><img src="images/pic01.jpg" alt="" /></div>
+								<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur sapien risus, commodo eget turpis at, elementum convallis enim turpis, lorem ipsum dolor sit amet nullam.</p>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus. Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum.</p>
+							</section>
 
 					</div>
 
@@ -115,6 +93,15 @@
 							<section>
 								<h3>Email</h3>
 								<p><a href="#">info@untitled.tld</a></p>
+							</section>
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
 							</section>
 						</section>
 					</footer>
