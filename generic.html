@@ -1,0 +1,351 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Java Exceptions</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px; 
+        }
+
+        .grid-item {
+            background-color: #f8f8f8; 
+            padding: 20px; 
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+        }
+        
+        .correct {
+            background-color: lightgreen;
+        }
+
+        .incorrect {
+            background-color: lightcoral; 
+        }
+    </style>
+</head>
+<body class="is-preload">
+    <div id="wrapper">
+        <header id="header">
+            <a href="index.html" class="logo">Java Exceptions</a>
+        </header>
+
+        <nav id="nav">
+            <ul class="links">
+                <li><a href="index.html">Home</a></li>
+                <li class="active"><a href="generic.html">Java Exceptions</a></li>
+                <li><a href="elements.html">Elements Reference</a></li>
+            </ul>
+        </nav>
+
+        <div id="main">
+            <section class="post">
+                <header class="major">
+                    <h1>Understanding Java Exceptions</h1>
+                </header>
+                <div class="grid-container">
+                    <!-- Textual Information -->
+                    <div class="grid-item">
+                        <h2>Textual Information</h2>
+                        <p>In Java, exceptions are events that disrupt the normal flow of the program's execution. They are used to signal error conditions. Java provides a robust exception handling mechanism that allows developers to manage runtime errors.</p>
+                    </div>
+
+                    <!-- Video Information -->
+                    <div class="grid-item">
+                        <h2>Video Information</h2>
+                        <p><a href="https://www.youtube.com/watch?v=1XAfapkBQjk" class="button">Watch Video on Java Exceptions</a></p>
+                    </div>
+
+                    <!-- Code Snippets -->
+                    <div class="grid-item">
+                        <h2>Code Snippets</h2>
+                        <pre>
+try {
+    // Code that may throw an exception
+} catch (ExceptionType e) {
+    // Exception handling code
+}
+                        </pre>
+                    </div>
+
+                    <!-- Quiz -->
+                    <div class="grid-item">
+                        <h2>Quiz</h2>
+                        <p>Test your knowledge on Java exceptions:</p>
+                        <form id="quizForm">
+                            <div class="question">
+                                <h3>1. What is an exception in Java?</h3>
+                                <ul>
+                                    <li><label><input type="radio" name="q1" value="a" onclick="checkAnswer(this, 'a')"> A runtime error that can be caught and handled.</label></li>
+                                    <li><label><input type="radio" name="q1" value="b" onclick="checkAnswer(this, 'b')"> A compilation error that prevents the program from running.</label></li>
+                                    <li><label><input type="radio" name="q1" value="c" onclick="checkAnswer(this, 'c')"> A feature that improves performance.</label></li>
+                                    <li><label><input type="radio" name="q1" value="d" onclick="checkAnswer(this, 'd')"> None of the above.</label></li>
+                                </ul>
+                            </div>
+                            <div class="question">
+                                <h3>2. Which keyword is used to handle exceptions in Java?</h3>
+                                <ul>
+                                    <li><label><input type="radio" name="q2" value="a" onclick="checkAnswer(this, 'a')"> throw</label></li>
+                                    <li><label><input type="radio" name="q2" value="b" onclick="checkAnswer(this, 'b')"> catch</label></li>
+                                    <li><label><input type="radio" name="q2" value="c" onclick="checkAnswer(this, 'c')"> finally</label></li>
+                                    <li><label><input type="radio" name="q2" value="d" onclick="checkAnswer(this, 'd')"> All of the above</label></li>
+                                </ul>
+                            </div>
+                            <div class="question">
+                                <h3>3. What happens if an exception is not caught?</h3>
+                                <ul>
+                                    <li><label><input type="radio" name="q3" value="a" onclick="checkAnswer(this, 'a')"> The program will terminate.</label></li>
+                                    <li><label><input type="radio" name="q3" value="b" onclick="checkAnswer(this, 'b')"> The exception is ignored.</label></li>
+                                    <li><label><input type="radio" name="q3" value="c" onclick="checkAnswer(this, 'c')"> The exception will be logged to a file.</label></li>
+                                    <li><label><input type="radio" name="q3" value="d" onclick="checkAnswer(this, 'd')"> The program continues executing.</label></li>
+                                </ul>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            q1: "a",
+            q2: "b",
+            q3: "a"
+        };
+
+        function checkAnswer(selectedRadio, answer) {
+            const question = selectedRadio.name;
+            const options = document.getElementsByName(question);
+
+            // Reset previous highlights
+            options.forEach(option => {
+                option.parentNode.classList.remove("correct", "incorrect");
+            });
+
+            // Highlight the selected answer
+            if (answer === correctAnswers[question]) {
+                selectedRadio.parentNode.classList.add("correct");
+            } else {
+                // Highlight the selected answer as incorrect
+                selectedRadio.parentNode.classList.add("incorrect");
+            }
+
+            // Highlight all incorrect answers
+            options.forEach(option => {
+                if (option.value !== correctAnswers[question]) {
+                    option.parentNode.classList.add("incorrect");
+                } else {
+                    option.parentNode.classList.add("correct");
+                }
+            });
+        }
+    </script>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+	<!DOCTYPE HTML>
+	<html lang="en">
+	<head>
+		<title>Java Exceptions</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			.grid-container {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 20px; 
+			}
+	
+			.grid-item {
+				background-color: #f8f8f8; 
+				padding: 20px; 
+				border-radius: 5px;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+				cursor: pointer; /* Indicate clickable items */
+			}
+			
+			.correct {
+				background-color: lightgreen;
+			}
+	
+			.incorrect {
+				background-color: lightcoral; 
+			}
+	
+			/* Hidden content style */
+			.hidden {
+				display: none; /* Hide the full content by default */
+			}
+	
+			/* Style for the expanded content */
+			.expanded {
+				margin-top: 10px;
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+		<div id="wrapper">
+			<header id="header">
+				<a href="index.html" class="logo">Java Exceptions</a>
+			</header>
+	
+			<nav id="nav">
+				<ul class="links">
+					<li><a href="index.html">Home</a></li>
+					<li class="active"><a href="generic.html">Java Exceptions</a></li>
+					<li><a href="elements.html">Elements Reference</a></li>
+				</ul>
+			</nav>
+	
+			<div id="main">
+				<section class="post">
+					<header class="major">
+						<h1>Understanding Java Exceptions</h1>
+					</header>
+					<div class="grid-container">
+						<!-- Textual Information -->
+						<div class="grid-item" onclick="toggleContent('text1')">
+							<h2>Textual Information</h2>
+							<p>In Java, exceptions are events that disrupt the normal flow of the program's execution.</p>
+							<div id="text1" class="hidden expanded">
+								<p>They are used to signal error conditions. Java provides a robust exception handling mechanism that allows developers to manage runtime errors effectively, ensuring that the program can handle exceptions gracefully rather than terminating abruptly.</p>
+							</div>
+						</div>
+	
+						<!-- Video Information -->
+						<div class="grid-item">
+							<h2>Video Information</h2>
+							<p><a href="https://www.youtube.com/watch?v=1XAfapkBQjk" class="button">Watch Video on Java Exceptions</a></p>
+						</div>
+	
+						<!-- Code Snippets -->
+						<div class="grid-item" onclick="toggleContent('code1')">
+							<h2>Code Snippets</h2>
+							<pre>
+	try {
+		// Code that may throw an exception
+	} catch (ExceptionType e) {
+		// Exception handling code
+	}
+							</pre>
+							<div id="code1" class="hidden expanded">
+								<pre>
+	try {
+		// This block contains code that may throw various exceptions.
+		// For example, dividing by zero or accessing an array index out of bounds.
+	} catch (ArithmeticException e) {
+		// Handle the case of division by zero.
+	} catch (ArrayIndexOutOfBoundsException e) {
+		// Handle the case of accessing an invalid array index.
+	} catch (Exception e) {
+		// Catch any other exceptions.
+	}
+								</pre>
+							</div>
+						</div>
+	
+						<!-- Quiz -->
+						<div class="grid-item">
+							<h2>Quiz</h2>
+							<p>Test your knowledge on Java exceptions:</p>
+							<form id="quizForm">
+								<div class="question">
+									<h3>1. What is an exception in Java?</h3>
+									<ul>
+										<li><label><input type="radio" name="q1" value="a" onclick="checkAnswer(this, 'a')"> A runtime error that can be caught and handled.</label></li>
+										<li><label><input type="radio" name="q1" value="b" onclick="checkAnswer(this, 'b')"> A compilation error that prevents the program from running.</label></li>
+										<li><label><input type="radio" name="q1" value="c" onclick="checkAnswer(this, 'c')"> A feature that improves performance.</label></li>
+										<li><label><input type="radio" name="q1" value="d" onclick="checkAnswer(this, 'd')"> None of the above.</label></li>
+									</ul>
+								</div>
+								<div class="question">
+									<h3>2. Which keyword is used to handle exceptions in Java?</h3>
+									<ul>
+										<li><label><input type="radio" name="q2" value="a" onclick="checkAnswer(this, 'a')"> throw</label></li>
+										<li><label><input type="radio" name="q2" value="b" onclick="checkAnswer(this, 'b')"> catch</label></li>
+										<li><label><input type="radio" name="q2" value="c" onclick="checkAnswer(this, 'c')"> finally</label></li>
+										<li><label><input type="radio" name="q2" value="d" onclick="checkAnswer(this, 'd')"> All of the above</label></li>
+									</ul>
+								</div>
+								<div class="question">
+									<h3>3. What happens if an exception is not caught?</h3>
+									<ul>
+										<li><label><input type="radio" name="q3" value="a" onclick="checkAnswer(this, 'a')"> The program will terminate.</label></li>
+										<li><label><input type="radio" name="q3" value="b" onclick="checkAnswer(this, 'b')"> The exception is ignored.</label></li>
+										<li><label><input type="radio" name="q3" value="c" onclick="checkAnswer(this, 'c')"> The exception will be logged to a file.</label></li>
+										<li><label><input type="radio" name="q3" value="d" onclick="checkAnswer(this, 'd')"> The program continues executing.</label></li>
+									</ul>
+								</div>
+							</form>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	
+		<script>
+			const correctAnswers = {
+				q1: "a",
+				q2: "b",
+				q3: "a"
+			};
+	
+			function checkAnswer(selectedRadio, answer) {
+				const question = selectedRadio.name;
+				const options = document.getElementsByName(question);
+	
+				// Reset previous highlights
+				options.forEach(option => {
+					option.parentNode.classList.remove("correct", "incorrect");
+				});
+	
+				// Highlight the selected answer
+				if (answer === correctAnswers[question]) {
+					selectedRadio.parentNode.classList.add("correct");
+				} else {
+					// Highlight the selected answer as incorrect
+					selectedRadio.parentNode.classList.add("incorrect");
+				}
+	
+				// Highlight all incorrect answers
+				options.forEach(option => {
+					if (option.value !== correctAnswers[question]) {
+						option.parentNode.classList.add("incorrect");
+					} else {
+						option.parentNode.classList.add("correct");
+					}
+				});
+			}
+	
+			function toggleContent(contentId) {
+				const content = document.getElementById(contentId);
+				if (content.classList.contains('hidden')) {
+					content.classList.remove('hidden');
+				} else {
+					content.classList.add('hidden');
+				}
+			}
+		</script>
+	
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+	</html>
