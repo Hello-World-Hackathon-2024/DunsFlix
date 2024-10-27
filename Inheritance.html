@@ -1,0 +1,248 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Java Inheritance</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px; 
+        }
+
+        .grid-item {
+            background-color: #f8f8f8; 
+            padding: 20px; 
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+            cursor: pointer; /* Add cursor pointer */
+        }
+
+        .correct {
+            background-color: lightgreen;
+        }
+
+        .incorrect {
+            background-color: lightcoral; 
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; 
+            z-index: 1000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0,0.4); 
+            padding-top: 60px; 
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; 
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; 
+            max-width: 600px; /* Set a max width */
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="is-preload">
+    <div id="wrapper">
+        <header id="header">
+            <a href="index.html" class="logo">Java Inheritance</a>
+        </header>
+
+        <nav id="nav">
+            <ul class="links">
+                <li><a href="index.html">Home</a></li>
+                <li class="active"><a href="Inheritance.html">Java Inheritance</a></li>
+                <li><a href="elements.html">Elements Reference</a></li>
+            </ul>
+        </nav>
+
+        <div id="main">
+            <section class="post">
+                <header class="major">
+                    <h1>Understanding Java Inheritance</h1>
+                </header>
+                <div class="grid-container">
+                    <!-- Textual Information -->
+                    <div class="grid-item" onclick="showModal()">
+                        <h2>Textual Information</h2>
+                        <p>Inheritance in Java allows one class to inherit the fields and methods of another class. It promotes code reusability and establishes a relationship between classes. The class that inherits is called the subclass, while the class being inherited from is called the superclass.</p>
+                        <br>
+                        <span style="color: blue; cursor: pointer; text-decoration: underline;" onclick="showModal()">Click to learn more</span>
+                    </div>
+                    
+
+                    <!-- Video Information -->
+                    <div class="grid-item">
+                        <h2>Video Information</h2>
+                        <div class="video-embed" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                            <iframe 
+                                src="https://youtube.com/embed/Zs342ePFvRI" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen 
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <!-- Code Snippets -->
+                    <div class="grid-item">
+                        <h2>Code Snippets</h2>
+                        <pre>
+class Animal {
+    void eat() {
+        System.out.println("This animal eats food.");
+    }
+}
+
+class Dog extends Animal {
+    void bark() {
+        System.out.println("The dog barks.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.eat(); // Inherited method
+        dog.bark(); // Dog's own method
+    }
+}
+                        </pre>
+                    </div>
+
+                    <!-- Quiz -->
+                    <div class="grid-item">
+                        <h2>Quiz</h2>
+                        <p>Test your knowledge on Java inheritance:</p>
+                        <form id="quizForm">
+                            <div class="question">
+                                <h3>1. What does inheritance allow a class to do in Java?</h3>
+                                <ul>
+                                    <li><label><input type="radio" name="q1" value="a" onclick="checkAnswer(this, 'a')"> Inherit properties and methods from another class.</label></li>
+                                    <li><label><input type="radio" name="q1" value="b" onclick="checkAnswer(this, 'b')"> Create an instance of an interface.</label></li>
+                                    <li><label><input type="radio" name="q1" value="c" onclick="checkAnswer(this, 'c')"> Use multiple classes to create a single object.</label></li>
+                                    <li><label><input type="radio" name="q1" value="d" onclick="checkAnswer(this, 'd')"> None of the above.</label></li>
+                                </ul>
+                            </div>
+                            <div class="question">
+                                <h3>2. Which keyword is used to inherit a class in Java?</h3>
+                                <ul>
+                                    <li><label><input type="radio" name="q2" value="a" onclick="checkAnswer(this, 'a')"> implements</label></li>
+                                    <li><label><input type="radio" name="q2" value="b" onclick="checkAnswer(this, 'b')"> extends</label></li>
+                                    <li><label><input type="radio" name="q2" value="c" onclick="checkAnswer(this, 'c')"> inherits</label></li>
+                                    <li><label><input type="radio" name="q2" value="d" onclick="checkAnswer(this, 'd')"> superclass</label></li>
+                                </ul>
+                            </div>
+                            <div class="question">
+                                <h3>3. What can a subclass do in Java?</h3>
+                                <ul>
+                                    <li><label><input type="radio" name="q3" value="a" onclick="checkAnswer(this, 'a')"> Access only private methods of the superclass.</label></li>
+                                    <li><label><input type="radio" name="q3" value="b" onclick="checkAnswer(this, 'b')"> Override methods from the superclass.</label></li>
+                                    <li><label><input type="radio" name="q3" value="c" onclick="checkAnswer(this, 'c')"> Instantiate the superclass directly.</label></li>
+                                    <li><label><input type="radio" name="q3" value="d" onclick="checkAnswer(this, 'd')"> None of the above.</label></li>
+                                </ul>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Java Inheritance Details</h2>
+            <p><strong>Purpose:</strong> Allows classes to share fields and methods in a hierarchy, reducing redundancy.</p>
+            <p><strong>Hierarchy:</strong><br>
+            Subclasses inherit fields and methods from superclasses.<br>
+            The Object class is the root of all classes; if no superclass is specified, it defaults to Object.<br>
+            Java supports single inheritance (a class can extend only one other class).<br>
+            Class Composition: Subclass instances contain both their own fields and those of the superclass.</p>
+            <p><strong>Key Methods in Object Class:</strong><br>
+            <code>clone():</code> Creates a shallow copy. To ensure a deep copy, classes should implement Cloneable.<br>
+            <code>equals():</code> Should be overridden, as the default method uses ==.<br>
+            <code>toString():</code> Used by methods like printf; often overridden for more descriptive output.</p>
+            <p><strong>Constructor Chaining and Rules:</strong><br>
+            Constructor Chaining: Ensures superclass constructors are called during object creation, using <code>super()</code> in subclasses.<br>
+            Constructor Rules:<br>
+            Each class must have a constructor (Java provides a default if none is defined).<br>
+            The first line in a constructor must call another constructor or the superclass constructor (<code>this()</code> or <code>super()</code>).<br>
+            If the superclass lacks a parameterless constructor, the subclass must call an existing constructor explicitly.</p>
+            <p><strong>Subclass Access and Modifiers:</strong><br>
+            <strong>Access Modifiers:</strong><br>
+            Private fields in a superclass cannot be accessed by subclasses.<br>
+            Protected allows access within subclasses.<br>
+            Other modifiers: public, protected, private, and package-private (no modifier).<br>
+            Accessing Superclass Methods: Overridden methods can call the superclass version using <code>super.methodName()</code>.</p>
+            <p><strong>Overloading vs. Overriding:</strong><br>
+            Overloading: Same method name in the same class with different parameters.<br>
+            Overriding: Same method name and parameters in both superclass and subclass, where the subclass version takes precedence.<br>
+            Use <code>@Override</code> to verify correct overriding.</p>
+            <p><strong>Special Operators:</strong><br>
+            <code>instanceof:</code> Used to check if an object is an instance of a specific class or subclass.</p>
+        </div>
+    </div>
+
+    <script>
+        function showModal() {
+            document.getElementById("myModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target === document.getElementById("myModal")) {
+                closeModal();
+            }
+        }
+
+        function checkAnswer(elem, answer) {
+            const correctAnswers = { q1: 'a', q2: 'b', q3: 'b' };
+            const questionName = elem.name;
+            const feedback = document.createElement("div");
+            feedback.style.marginTop = "10px";
+
+            if (answer === correctAnswers[questionName]) {
+                feedback.textContent = "Correct!";
+                feedback.classList.add("correct");
+            } else {
+                feedback.textContent = "Incorrect, please try again.";
+                feedback.classList.add("incorrect");
+            }
+
+            elem.parentNode.appendChild(feedback);
+        }
+    </script>
+</body>
+</html>
