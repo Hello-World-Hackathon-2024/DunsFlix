@@ -1,0 +1,174 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Java Threads and Concurrency</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px; 
+        }
+
+        .grid-item {
+            background-color: #f8f8f8; 
+            padding: 20px; 
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+        }
+        
+        .correct {
+            background-color: lightgreen;
+        }
+
+        .incorrect {
+            background-color: lightcoral; 
+        }
+    </style>
+</head>
+<body class="is-preload">
+    <div id="wrapper">
+        <header id="header">
+            <a href="ThreadsConcurrency.html" class="logo">Ch 9: Threads and Concurrency</a>
+        </header>
+
+        <nav id="nav">
+            <ul class="links">
+                <li><a href="index.html">Home</a></li>
+                <li class="active"><a href="generic.html">Ch 9: Threads and Concurrency</a></li>
+                <li><a href="elements.html">Elements Reference</a></li>
+            </ul>
+        </nav>
+
+        <div id="main">
+            <section class="post">
+                <header class="major">
+                    <h1>Detailed Notes on Threads & Concurrency</h1>
+                </header>
+                <div class="grid-container">
+                    <!-- Textual Information -->
+                    <div class="grid-item">
+                        <h2>Background Info</h2>
+                        <p>	
+							<ul>
+								<li>Ability to run multiple programs is thanks to the idea of Time Splicing: O/S runs each Program for a few Miliseconds before swapping them out to create the illusion of Concurrency</li>
+								<li>Illusion is maintable thanks to increasing CPU speed thanks to the process described by Moore's Law</li>
+								<li>Need to Eventually break down CPU into multiple cores due to increasing power consumption and heat generation caused by the more Powerful CPU</li>
+								<li>Multiple Cores run at slower speed and power but mimic the capability of the faster single CPU core</li>
+							</ul>
+						</p>
+                    </div>
+
+                    <!-- Video Information -->
+                    <div class="grid-item">
+                        <h2>Java Threads</h2>
+						<p>	
+							<ul>
+								<li>Threads can run either Sequentially(One thread going through everything) or Concurrently(Multiple threads working through together)</li>
+								<li>Java Threads work on a Shared Memory Architecture(One Program: All threads share memory)</li>
+								<li>Two ways to use Java Threads: </li>
+								<ul>
+									<li>Implement Runnable</li>
+									<li>Extend Thread</li>
+								</ul>
+								<li>Three main Java Thread Methods: </li>
+								<ul>
+									<li>Thread.start()</li>
+									<li>Thread.join()</li>
+									<li>Thread.run()</li>
+								</ul>
+							</ul>
+						</p>                    </div>
+
+                    <!-- Code Snippets -->
+                    <div class="grid-item">
+                        <h2>Methods of Concurrency & Problems</h2>
+                        <p>
+							<ul>
+								<li>Two Ways to Decompose a Problem for Concurrency</li>
+								<ul>
+									<li>Task Decomposition</li>
+									<li>Domain Decomposition</li>
+								</ul>
+								<li>Task Decomposition involves breaking down the problem into subtasks that are each managed by a Thread. Main Benefit: Responsiveness</li>
+								<li>Domain Decomposition involves breaking down the data down into subsets for each thread to process. Main Benefit: Pure Speed</li>
+								<li>Problem: Thread execution order is unpredictable because threads are prevented from hogging CPU to keep up illusion of Time Splicing and main thread can move on without other threads</li>
+								<li>Solution: Thread.join()</li>
+								<ul>
+									<li>Thread.join() is a minor form of synchronization that blocks the main thread until the calling thread has finished its run() method</li>
+								</ul>
+							</ul>
+                        </p>
+                    </div>
+
+                    <!-- Quiz -->
+                    <div class="grid-item">
+                        <h2>Race Condition & Synchronized</h2>
+                        <p>
+							<ul>
+								<li>Race Condition: Two or more threads attempt to access shared data and modify it at the same time.</li>
+								<ul>
+									<li>Creates an issue where data can be overwritten or certain actions are not successful</li>
+									<li>Results vary with each execution due to the unpredictable order of threads</li>
+								</ul>
+								<li>Solution: Synchronization(keyword: sychronized)</li>
+								<ul>
+									<li>Sychronized keyword uses an object as a lock that prevents multiple threads from being inside of the synchronized block at once</li>
+									<li>Sychronized keyword can also be used on methods, but is ideally used around specific blocks of code.</li>
+									<li>Best case usage: Use when modifying shared data such as static variables/data structures</li>
+								</ul>
+							</ul>
+						</p>
+                        
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            q1: "d",
+            q2: "a",
+            q3: "d",
+            q4: "b"
+        };
+
+        function checkAnswer(selectedRadio, answer) {
+            const question = selectedRadio.name;
+            const options = document.getElementsByName(question);
+
+            // Reset previous highlights
+            options.forEach(option => {
+                option.parentNode.classList.remove("correct", "incorrect");
+            });
+
+            // Highlight the selected answer
+            if (answer === correctAnswers[question]) {
+                selectedRadio.parentNode.classList.add("correct");
+            } else {
+                // Highlight the selected answer as incorrect
+                selectedRadio.parentNode.classList.add("incorrect");
+            }
+
+            // Highlight all incorrect answers
+            options.forEach(option => {
+                if (option.value !== correctAnswers[question]) {
+                    option.parentNode.classList.add("incorrect");
+                } else {
+                    option.parentNode.classList.add("correct");
+                }
+            });
+        }
+    </script>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>

@@ -1,0 +1,241 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Java Threads and Concurrency</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px; 
+        }
+
+        .grid-item {
+            background-color: #f8f8f8; 
+            padding: 20px; 
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+        }
+        
+        .correct {
+            background-color: lightgreen;
+        }
+
+        .incorrect {
+            background-color: lightcoral; 
+        }
+    </style>
+</head>
+<body class="is-preload">
+    <div id="wrapper">
+        <header id="header">
+            <a href="index.html" class="logo">DunsFlix</a>
+        </header>
+
+        <nav id="nav">
+            <ul class="links">
+                <li><a href="index.html">Home</a></li>
+                <li class="active"><a href="generic.html">Ch 9: Threads and Concurrency</a></li>
+                <li><a href="elements.html">Elements Reference</a></li>
+            </ul>
+        </nav>
+
+        <div id="main">
+            <section class="post">
+                <header class="major">
+                    <h1>Understanding Java Threads and Concurrency</h1>
+                </header>
+                <div class="grid-container">
+                    <!-- Textual Information -->
+                    <div class="grid-item">
+                        <h2>Textual Information</h2>
+                        <p>In Java, a thread represents a single flow of execution within a program. Think of it as a factory with each worker(Thread) working independently on their task and concurrently alongside the other factory workers(Threads).</p>
+                        <p><a href="detailedThreadsNotes.html" class="button">Detailed Notes on Java Threads and Concurrency</a></p>
+                    </div>
+
+                    <!-- Video Information -->
+                    <div class="grid-item">
+                        <h2>Video Information</h2>
+                        <div class="video-embed" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                            <iframe 
+                                src="https://www.youtube.com/embed/r_MbozD32eo" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen 
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <!-- Code Snippets -->
+                    <div class="grid-item">
+                        <h2>Code Snippets</h2>
+                        <pre>
+//Threads when Implementing Runnable
+public class MyThread implements Runnable {
+
+    public void run() { 
+        System.out.println("Running!");
+    }
+
+    public static void main(String[] args) {
+        MyThread t = new MyThread();
+        Thread toRun = new Thread(t);
+
+        toRun.start();
+    }
+}
+
+//Threads when Extending Thread
+public class MyThreadTwo extends Thread {
+    public void run() {
+        System.out.println("Running!");
+    }
+
+    public static void main(String[] args) {
+        MyThreadTwo toRun = new MyThreadTwo();
+
+        toRun.start();
+    }
+}
+
+//Using Synchronized Block to Avoid Race Conditions
+public class MyThread implements Runnable {
+    private static ArrayList<Integer> nums;
+    public static final Object key = new Object();
+
+    public MyThread() {
+        if(nums == null) {
+            synchronized(key) {
+                if(nums == null) {
+                    nums = new ArrayList<Integer>();
+                }
+            }
+        }
+    }
+
+    public void run() { 
+        for(int i = 0; i < 100; i++) {
+            synchronized(key) {
+                nums.add(i);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        MyThread t = new MyThread();
+        Thread t1 = new Thread(t);
+        Thread t2 = new Thread(t);
+        Thread t3 = new Thread(t);
+
+        t1.start();
+        t2.start();
+        t3.start();
+
+        try {
+            t1.join();
+            t2.join();
+            t3.join();
+        } catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+
+    }
+}
+                        </pre>
+                    </div>
+
+                    <!-- Quiz -->
+                    <div class="grid-item">
+                        <h2>Quiz</h2>
+                        <p>Test your knowledge on Java Threads and Concurrency:</p>
+                        <form id="quizForm">
+                            <div class="question">
+                                <h3>1. What are the different ways to create a Thread?</h3>
+                                <ul>
+                                    <li><label><input type="radio" name="q1" value="a" onclick="checkAnswer(this, 'a')"> By extending the Thread class and overriding its run() method.</label></li>
+                                    <li><label><input type="radio" name="q1" value="b" onclick="checkAnswer(this, 'b')"> By implementing the Runnable interface and passing it to a Thread object.</label></li>
+                                    <li><label><input type="radio" name="q1" value="c" onclick="checkAnswer(this, 'c')"> By using a Thread pool to manage thread creation and execution.</label></li>
+                                    <li><label><input type="radio" name="q1" value="d" onclick="checkAnswer(this, 'd')"> All of the Above.</label></li>
+                                </ul>
+                            </div>
+                            <div class="question">
+                                <h3>2. What are race conditions?</h3>
+                                <ul>
+                                    <li><label><input type="radio" name="q2" value="a" onclick="checkAnswer(this, 'a')"> A situation where two or more threads attempt to modify shared data at the same time, leading to inconsistent results.</label></li>
+                                    <li><label><input type="radio" name="q2" value="b" onclick="checkAnswer(this, 'b')"> A method for synchronizing thread execution to prevent deadlocks.</label></li>
+                                    <li><label><input type="radio" name="q2" value="c" onclick="checkAnswer(this, 'c')"> A performance issue caused by excessive context switching between threads.</label></li>
+                                    <li><label><input type="radio" name="q2" value="d" onclick="checkAnswer(this, 'd')"> A type of error that occurs when a thread exceeds its allocated memory limit.</label></li>
+                                </ul>
+                            </div>
+                            <div class="question">
+                                <h3>3. What are different ways to break down a task for Concurrency?</h3>
+                                <ul>
+                                    <li><label><input type="radio" name="q3" value="a" onclick="checkAnswer(this, 'a')"> Dividing the task into smaller independent subtasks that can run in parallel.</label></li>
+                                    <li><label><input type="radio" name="q3" value="b" onclick="checkAnswer(this, 'b')"> Splitting a large dataset into smaller chunks for different threads to process simultaneously.</label></li>
+                                    <li><label><input type="radio" name="q3" value="c" onclick="checkAnswer(this, 'c')"> Utilizing a divide-and-conquer strategy to recursively split tasks into smaller segments.</label></li>
+                                    <li><label><input type="radio" name="q3" value="d" onclick="checkAnswer(this, 'd')"> All of the above.</label></li>
+                                </ul>
+                            </div>
+                            <div class="question">
+                                <h3>4. What does Thread.join() do?</h3>
+                                <ul>
+                                    <li><label><input type="radio" name="q4" value="a" onclick="checkAnswer(this, 'a')"> It merges two threads into a single thread, combining their execution.</label></li>
+                                    <li><label><input type="radio" name="q4" value="b" onclick="checkAnswer(this, 'b')"> It pauses the execution of the current thread until the specified thread terminates.</label></li>
+                                    <li><label><input type="radio" name="q4" value="c" onclick="checkAnswer(this, 'c')"> It starts the execution of a thread that has been created but not yet started.</label></li>
+                                    <li><label><input type="radio" name="q4" value="d" onclick="checkAnswer(this, 'd')"> It cancels the execution of a thread that is currently running.</label></li>
+                                </ul>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            q1: "d",
+            q2: "a",
+            q3: "d",
+            q4: "b"
+        };
+
+        function checkAnswer(selectedRadio, answer) {
+            const question = selectedRadio.name;
+            const options = document.getElementsByName(question);
+
+            // Reset previous highlights
+            options.forEach(option => {
+                option.parentNode.classList.remove("correct", "incorrect");
+            });
+
+            // Highlight the selected answer
+            if (answer === correctAnswers[question]) {
+                selectedRadio.parentNode.classList.add("correct");
+            } else {
+                // Highlight the selected answer as incorrect
+                selectedRadio.parentNode.classList.add("incorrect");
+            }
+
+            // Highlight all incorrect answers
+            options.forEach(option => {
+                if (option.value !== correctAnswers[question]) {
+                    option.parentNode.classList.add("incorrect");
+                } else {
+                    option.parentNode.classList.add("correct");
+                }
+            });
+        }
+    </script>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
