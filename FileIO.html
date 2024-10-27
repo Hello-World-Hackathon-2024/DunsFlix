@@ -1,0 +1,318 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Java File I/O</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 100%;
+        }
+
+        @media (min-width: 600px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .grid-item {
+            background-color: #f8f8f8;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .overlay-content {
+            background-color: #ffffff;
+            color: #333;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 600px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            height: 80%;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .overlay-content h2, .overlay-content h3 {
+            margin: 15px 0 10px;
+        }
+
+        .overlay-content p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            margin-top: 15px;
+            color: #007BFF;
+        }
+
+        pre {
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: monospace;
+            color: #d63384;
+        }
+
+        #closeOverlay {
+            background: transparent;
+            color: black;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .correct {
+            background-color: lightgreen;
+        }
+
+        .incorrect {
+            background-color: lightcoral;
+        }
+
+        .video-embed {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 100%;
+        }
+
+        iframe {
+            width: 100%;
+            height: 315px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .code-snippet {
+            background-color: #e8e8e8;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body class="is-preload">
+    <div id="wrapper">
+        <header id="header">
+            <a href="index.html" class="logo">Java File I/O</a>
+        </header>
+        <div id="main">
+            <section class="post">
+                <header class="major">
+                    <h1>Understanding File I/O in Java</h1>
+                </header>
+                <div class="grid-container">
+                    <!-- Textual Information -->
+                    <div class="grid-item" id="textualInfo">
+                        <h2>Textual Information</h2>
+                        <p>In Java, File Input/Output is essential for reading from and writing to files.</p>
+                        <p>Click this box to learn more.</p>
+                    </div>
+
+                    <!-- Video Information -->
+                    <div class="grid-item">
+                        <h2>Video Information</h2>
+                        <div class="video-embed" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                            <iframe 
+                                src="https://www.youtube.com/embed/hgF21imQ_Is" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen 
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                            </iframe>
+                        </div>
+                        
+                    </div>
+
+                    <!-- Code Snippets -->
+                    <div class="grid-item">
+                        <h2>Code Snippets</h2>
+                        <p>See how File I/O is implemented in Java</p>
+                        <pre class="code-snippet">
+import java.io.File;  // Import the File class
+import java.io.FileWriter;  // Import the FileWriter class
+import java.io.FileReader;  // Import the FileReader class
+import java.io.BufferedReader;  // Import the BufferedReader class
+import java.io.IOException;  // Import the IOException class
+//or do import java.io.*;
+
+public class FileIOExample {
+    public static void main(String[] args) {
+        File f = new File("example.txt");
+        // Writing to a file
+        try {
+            FileOutputStream fos = new FileOutputStream(f);
+            PrintWriter pw = new PrintWriter(fos);
+            pw.println("This is a first line.")
+            pw.println("This is a second line.")
+            pw.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred while writing to the file.");
+            e.printStackTrace();
+        }
+
+        // Reading from a file
+        try {
+            FileReader fr = new FileReader(f);
+            BufferedReader bfr = new BufferedReader(fr);
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+            reader.close();  // Close the reader
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading the file.");
+            e.printStackTrace();
+        }
+    }
+}
+                        </pre>
+                    </div>
+
+                    <!-- Quiz -->
+                    <div class="grid-item">
+                        <h2>Quiz</h2>
+                        <p>Test your knowledge on File I/O in Java:</p>
+                        <form id="quizForm">
+                            <div class="question">
+                                <h3>1. What exception is thrown if a file is not found?</h3>
+                                <ul>
+                                    <li class="answer"><label><input type="radio" name="q1" value="a" onclick="checkAnswer(this, 'q1', 'a')"> FileNotFoundException</label></li>
+                                    <li class="answer"><label><input type="radio" name="q1" value="b" onclick="checkAnswer(this, 'q1', 'b')"> IOException</label></li>
+                                    <li class="answer"><label><input type="radio" name="q1" value="c" onclick="checkAnswer(this, 'q1', 'c')"> NullPointerException</label></li>
+                                </ul>
+                            </div>
+                            <div class="question">
+                                <h3>2. Which class is used for writing text to files?</h3>
+                                <ul>
+                                    <li class="answer"><label><input type="radio" name="q2" value="a" onclick="checkAnswer(this, 'q2', 'a')"> FileReader</label></li>
+                                    <li class="answer"><label><input type="radio" name="q2" value="b" onclick="checkAnswer(this, 'q2', 'b')"> FileWriter</label></li>
+                                    <li class="answer"><label><input type="radio" name="q2" value="c" onclick="checkAnswer(this, 'q2', 'c')"> PrintWriter</label></li>
+                                    <li class="answer"><label><input type="radio" name="q2" value="d" onclick="checkAnswer(this, 'q2', 'd')"> BufferedWriter</label></li>
+                                </ul>
+                            </div>
+                            <div class="question">
+                                <h3>3. What method is used to close a file after writing?</h3>
+                                <ul>
+                                    <li class="answer"><label><input type="radio" name="q3" value="a" onclick="checkAnswer(this, 'q3', 'a')"> closeFile()</label></li>
+                                    <li class="answer"><label><input type="radio" name="q3" value="b" onclick="checkAnswer(this, 'q3', 'b')"> close()</label></li>
+                                    <li class="answer"><label><input type="radio" name="q3" value="c" onclick="checkAnswer(this, 'q3', 'c')"> end()</label></li>
+                                </ul>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="overlay" id="overlay">
+            <div class="overlay-content">
+                <button id="closeOverlay">✖</button>
+                <h2>Learn More About File I/O</h2>
+                <p>File Input/Output in Java is essential for managing data stored on disk.</p>
+                <h2>Additional Information</h2> <p>File Input/Output (I/O) is a vital aspect of Java programming that allows developers to read and write files. It is widely used in applications that require data persistence. The Java I/O API provides a rich set of classes for file manipulation.</p> <h3>Important Classes:</h3> <ul> <li><strong>File:</strong> Represents a file or directory path.</li> <li><strong>FileWriter:</strong> Enables writing character streams to files.</li> <li><strong>FileReader:</strong> Facilitates reading character streams from files.</li> <li><strong>BufferedReader:</strong> Reads text from a character-input stream, buffering characters to provide efficient reading of characters, arrays, and lines.</li> </ul> <h3>File Input/Output in Java</h3> <p>Files are crucial for data persistence, allowing recovery after crashes and enabling data sharing between programs. Java provides abstractions for files and file systems, although some OS dependencies remain.</p> <h4>Abstraction Layers</h4> <ul> <li><strong>Low-Level I/O:</strong> Transfers raw data byte by byte using <code>FileInputStream</code> and <code>FileOutputStream</code>.</li> <li><strong>High-Level I/O:</strong> Uses data types and wraps streams, e.g., <code>DataInputStream</code> and <code>DataOutputStream</code>.</li> <li><strong>Object I/O:</strong> Manages Java objects with <code>ObjectInputStream</code> and <code>ObjectOutputStream</code>. Classes must implement <code>Serializable</code>.</li> </ul> <h4>File Operations</h4> <ul> <li><strong>Opening Files:</strong> Specify mode (read, write, append).</li> <li><strong>Reading/Writing:</strong> Use methods to transfer data and specify data types.</li> <li><strong>File Position:</strong> Manage read/write positions using methods to skip or rewind.</li> <li><strong>Closing Files:</strong> Flushes data and frees resources.</li> </ul> <h4>File Content Types</h4> <ul> <li><strong>Text Files:</strong> (.java, .txt) - Human-readable, platform-independent.</li> <li><strong>Binary Files:</strong> (.class, .exe) - Non-human-readable, requires specific programs.</li> </ul> <h4>Reading and Writing Text</h4> <ul> <li><strong>Writing:</strong> Use <code>PrintWriter</code> for platform independence.</li> <li><strong>Reading:</strong> Use <code>BufferedReader</code> for efficiency.</li> </ul> <h4>Exception Handling</h4> <p>Must handle <code>IOException</code> when performing file operations.</p>
+            </div>
+        </div>
+
+        <footer id="footer">
+            <div class="inner">
+                <ul class="menu">
+                    <li>&copy; 2024 Java File I/O. All rights reserved.</li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function checkAnswer(selectedRadio, questionId, selectedValue) {
+            const correctAnswers = {
+                q1: 'a',
+                q2: 'b',
+                q3: 'b'
+            };
+    
+            const questionContainer = selectedRadio.closest('.question');
+            const answers = questionContainer.querySelectorAll('.answer');
+    
+            // Remove previous highlights
+            answers.forEach(answer => {
+                answer.classList.remove('correct', 'incorrect'); 
+            });
+    
+            // Highlight correct and incorrect answers
+            answers.forEach(answer => {
+                const input = answer.querySelector('input');
+                if (input.value === correctAnswers[questionId]) {
+                    answer.classList.add('correct'); // Correct answer
+                } else {
+                    answer.classList.add('incorrect'); // Incorrect answers
+                }
+            });
+    
+            // Highlight the selected answer
+            if (selectedValue === correctAnswers[questionId]) {
+                selectedRadio.parentElement.parentElement.classList.add('correct');
+            } else {
+                selectedRadio.parentElement.parentElement.classList.add('incorrect');
+            }
+        }
+    
+        document.getElementById('closeOverlay').onclick = function () {
+            document.getElementById('overlay').style.display = 'none';
+        };
+    
+        document.getElementById('textualInfo').onclick = function () {
+            document.getElementById('overlay').style.display = 'flex';
+        };
+    </script>
+    
+</body>
+</html>
