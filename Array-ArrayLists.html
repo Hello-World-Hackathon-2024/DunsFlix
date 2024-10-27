@@ -1,0 +1,374 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Java Arrays and ArrayLists</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 100%;
+        }
+
+        @media (min-width: 600px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .grid-item {
+            background-color: #f8f8f8;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+            .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .overlay-content {
+        background-color: #ffffff; /* White background for better contrast */
+        color: #333; /* Darker text for readability */
+        border-radius: 10px; /* Rounded corners for a softer look */
+        padding: 20px; /* Padding around the content */
+        max-width: 600px; /* Maximum width of the overlay */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+        width: 90%; /* Responsive width */
+        height: 80%; /* Fixed height for scrolling */
+        overflow-y: auto; /* Enable vertical scrolling */
+        position: relative;
+    }
+
+    .overlay-content h2, .overlay-content h3 {
+        margin: 15px 0 10px; /* Spacing for headings */
+    }
+
+    .overlay-content p {
+        line-height: 1.6; /* Improved line height for better readability */
+        margin-bottom: 15px; /* Space between paragraphs */
+    }
+
+    h4 {
+        margin-top: 15px; /* Spacing above subheadings */
+        color: #007BFF; /* Color for subheadings */
+    }
+
+    pre {
+        background-color: #f0f0f0; /* Light gray background for code */
+        border: 1px solid #ccc; /* Border around code block */
+        border-radius: 5px; /* Rounded corners for code block */
+        padding: 10px; /* Padding inside the code block */
+        overflow-x: auto; /* Enable horizontal scrolling if necessary */
+    }
+
+    code {
+        font-family: monospace; /* Monospace font for code */
+        color: #d63384; /* Different color for code */
+    }
+
+
+        #closeOverlay {
+            background: transparent;
+            color: black;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .correct {
+            background-color: lightgreen;
+        }
+
+        .incorrect {
+            background-color: lightcoral;
+        }
+
+        .video-embed {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 100%;
+        }
+
+        iframe {
+            width: 100%;
+            height: 315px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .code-snippet {
+            background-color: #e8e8e8;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body class="is-preload">
+    <div id="wrapper">
+        <header id="header">
+            <a href="index.html" class="logo">Java Arrays and ArrayLists</a>
+        </header>
+
+        <nav id="nav">
+            <ul class="links">
+                <li><a href="index.html">Home</a></li>
+                <li class="active"><a href="generic.html">Java Arrays and ArrayLists</a></li>
+                <li><a href="elements.html">Elements Reference</a></li>
+            </ul>
+        </nav>
+
+        <div id="main">
+            <section class="post">
+                <header class="major">
+                    <h1>Understanding Java Arrays and ArrayLists</h1>
+                </header>
+                <div class="grid-container">
+                    <!-- Textual Information -->
+                    <div class="grid-item" id="textualInfo">
+                        <h2>Textual Information</h2>
+                        <p>In Java, arrays are fixed-size data structures that hold a collection of elements. ArrayLists, on the other hand, are resizable and can grow as elements are added.</p>
+                        <p>Click this box to learn more.</p>
+                    </div>
+
+                    <!-- Video Information -->
+                    <div class="grid-item">
+                        <h2>Video Information</h2>
+                        <div class="video-embed" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                            <iframe 
+                                src="https://www.youtube.com/embed/n60Dn0UsbEk" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen 
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <!-- Code Snippets -->
+                    <div class="grid-item">
+                        <h2>Code Snippets</h2>
+                        <p>See how Arrays and ArrayLists are implemented</p>
+                        <pre class="code-snippet">
+int[] numbers = {1, 2, 3, 4, 5};  // Array with 5 elements
+
+// Accessing elements in the array
+System.out.println(numbers[0]);  // Outputs 1 (first element)
+System.out.println(numbers[numbers.length - 1]);  // Outputs 5 (last element)
+
+// Modifying an element in the array
+numbers[1] = 10;  // Changes the second element to 10
+
+// Printing all elements using a for loop
+for (int i = 0; i < numbers.length; i++) {
+    System.out.print(numbers[i] + " ");
+}
+// Output: 1 10 3 4 5
+
+// Printing all elements using a for-each loop
+for (int num : numbers) {
+    System.out.print(num + " ");
+}
+// Output: 1 10 3 4 5
+
+// 5. ArrayList with Wrapper Classes
+ArrayList<Double> grades = new ArrayList<>();  // ArrayList of Double objects
+
+// Adding elements
+grades.add(85.5);
+grades.add(90.2);
+grades.add(76.4);
+
+// Calculating the average grade using a for-each loop
+double sum = 0;
+for (double grade : grades) {
+    sum += grade;
+}
+double average = sum / grades.size();
+System.out.println("Average grade: " + average);  // Outputs the average grade
+
+                            </pre>
+                    </div>
+
+                    <!-- Quiz -->
+                    <div class="grid-item">
+                        <h2>Quiz</h2>
+                        <p>Test your knowledge on Java arrays and ArrayLists:</p>
+                        <form id="quizForm">
+                            <div class="question">
+                                <h3>1. What is the value in</h3>
+                                <h3><code>array2[array2.length - 1]</code> </h3>
+                                <h3>After the following code is executed?</h3>
+                                <pre>
+double[] array1 = new double[50];
+double[] array2 = new double[50];
+for(int i = 0; i < array1.length; i++) {
+    array1[i] = i + 1;
+    array2[i] = array2.length - i;
+}
+array2 = array1;
+for(int i = 1; i < array1.length; i++)
+    array1[i] = array1[i - 1] + array1[i];
+                                </pre>
+                                <ul>
+                                    <li><label><input type="radio" name="q1" value="a" onclick="checkAnswer(this, 'q1')"> 100</label></li>
+                                    <li><label><input type="radio" name="q1" value="b" onclick="checkAnswer(this, 'q1')"> 98</label></li>
+                                    <li><label><input type="radio" name="q1" value="c" onclick="checkAnswer(this, 'q1')"> 49</label></li>
+                                </ul>
+                            </div>
+                            <div class="question">
+                                <h3>2. What error will be caused by the following code, and why?</h3>
+                                <pre>
+String[] array = new String[100];
+System.out.println(array[99].charAt(0) + " is the first 
+letter of the last String.");
+                                </pre>
+                                <ul>
+                                    <li><label><input type="radio" name="q2" value="a" onclick="checkAnswer(this, 'q2')"> NullPointerException</label></li>
+                                    <li><label><input type="radio" name="q2" value="b" onclick="checkAnswer(this, 'q2')"> ArrayIndexOutOfBoundsException</label></li>
+                                    <li><label><input type="radio" name="q2" value="c" onclick="checkAnswer(this, 'q2')"> StringIndexOutOfBoundsException</label></li>
+                                    <li><label><input type="radio" name="q2" value="d" onclick="checkAnswer(this, 'q2')"> No error</label></li>
+                                </ul>
+                            </div>
+                            <div class="question">
+                                <h3>3. How do you declare an array in Java?</h3>
+                                <ul>
+                                    <li><label><input type="radio" name="q3" value="a" onclick="checkAnswer(this, 'q3')"> int[] arr;</label></li>
+                                    <li><label><input type="radio" name="q3" value="b" onclick="checkAnswer(this, 'q3')"> array int arr[];</label></li>
+                                    <li><label><input type="radio" name="q3" value="c" onclick="checkAnswer(this, 'q3')"> int arr[];</label></li>
+                                    <li><label><input type="radio" name="q3" value="d" onclick="checkAnswer(this, 'q3')"> Both a and c.</label></li>
+                                </ul>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="overlay" id="infoOverlay">
+            <div class="overlay-content">
+                <button id="closeOverlay">&times;</button>
+                <h2>More Information</h2>
+        
+                <h3>Arrays</h3>
+                <p><strong>Characteristics:</strong> Homogeneous, Static Size, Random Access, Reference Types Only.</p>
+                <h4>Array Initialization</h4>
+                <p>Compile-time: <code>char[] vowels = {'a', 'e', 'i', 'o', 'u'};</code><br>
+                General declaration: <code>Type_name[] variable_name = new Type_name[i];</code><br>
+                Default values: 0 for int, 0.0 for real types, null for reference types.</p>
+        
+                <h3>2D Arrays</h3>
+                <p>A 2D Array is essentially an array of arrays:</p>
+                <pre><code>int[][] numbers = new int[5][6];</code></pre>
+                <p>Creates 5 rows and 6 columns. A 2D array can have varying column counts across rows (ragged array).</p>
+        
+                <h3>For-Each Loop</h3>
+                <p>Overview of For-Each Loop:</p>
+                <pre><code>int[] numbers = {1, 2, 3, 4, 5};<br>
+        for(int num : numbers) { /* Process each element *\/ }</code></pre>
+                <p>Note: Limited to read-access of each element.</p>
+        
+                <h3>Varargs</h3>
+                <p>Declaring a Varargs Method:</p>
+                <pre><code>public static void func(int... a) {}</code></pre>
+                <p>Varargs parameter must be the last parameter in a method.</p>
+        
+                <h3>ArrayList</h3>
+                <p><strong>Characteristics:</strong> Dynamic Size, works with reference types only (requires wrapper classes for primitives).</p>
+                <h4>Declaring an ArrayList</h4>
+                <p>Examples:</p>
+                <pre><code>ArrayList<String> list = new ArrayList<>();<br>
+        var list = new ArrayList<String>();</code></pre>
+        
+                <h4>Useful ArrayList Methods:</h4>
+                <ul>
+                    <li><code>add(e)</code> - Adds element to end of list</li>
+                    <li><code>add(i, e)</code> - Adds element <code>e</code> at index <code>i</code></li>
+                    <li><code>contains(e)</code> - Checks if element <code>e</code> is in the list</li>
+                    <li><code>get(i)</code> - Retrieves element at index <code>i</code></li>
+                    <li><code>remove(e)</code> - Removes element <code>e</code> from the list</li>
+                    <li><code>set(i, e)</code> - Sets element at index <code>i</code></li>
+                    <li><code>size()</code> - Returns the current size of the list</li>
+                </ul>
+        
+                <h3>Arrays Class</h3>
+                <p>Import Statement: <code>import java.util.Arrays;</code></p>
+                <h4>Utility Methods:</h4>
+                <p>Notably, <code>Arrays.copyOf(...);</code></p>
+            </div>
+        </div>
+        
+
+        <script>
+            document.getElementById("textualInfo").onclick = function() {
+                document.getElementById("infoOverlay").style.display = "flex";
+            };
+        
+            document.getElementById("closeOverlay").onclick = function() {
+                document.getElementById("infoOverlay").style.display = "none";
+            };
+        
+            function checkAnswer(selectedOption, questionId) {
+                const correctAnswers = { q1: "a", q2: "a", q3: "d" }; // Correct answers
+                const parentDiv = selectedOption.closest("div.question"); // Get parent question div
+                const userAnswer = selectedOption.value; // Get the user's selected answer
+        
+                // Clear previous highlighting
+                const options = parentDiv.querySelectorAll('input[type="radio"]');
+                options.forEach(option => {
+                    const label = option.parentElement; // Get the label element
+                    label.classList.remove("correct", "incorrect"); // Remove any previous classes
+                });
+        
+                // Highlight the correct answer and the selected option
+                options.forEach(option => {
+                    const label = option.parentElement; // Get the label of the option
+                    if (option.value === correctAnswers[questionId]) {
+                        label.classList.add("correct"); // Highlight the correct answer
+                    } else {
+                        label.classList.add("incorrect"); // Highlight the incorrect answers
+                    }
+                });
+            }
+        </script>
+        
+        
+        
+    </div>
+</body>
+</html>
